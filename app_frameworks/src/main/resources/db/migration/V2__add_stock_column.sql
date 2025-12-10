@@ -1,0 +1,2 @@
+ALTER TABLE producto
+ADD COLUMN stock INT DEFAULT 0;
