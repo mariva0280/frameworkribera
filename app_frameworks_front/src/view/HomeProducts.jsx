@@ -63,7 +63,7 @@ export const HomeProducts = ({ onUserLoggedOut }) => {
 
                     <div className="flex flex-col gap-3 sm:flex-row">
                         <button
-                            className="inline-flex items-center justify-center rounded-lg bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+                            className="inline-flex items-center justify-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
                             title="Crear nuevo producto"
                             type="button"
                             onClick={handleCreateClick}
@@ -83,31 +83,34 @@ export const HomeProducts = ({ onUserLoggedOut }) => {
                 </header>
 
 
+                <main>
+                    <div key={view} className="animate-slideUp">
+                        {view === 'list' &&
+                            <ProductsList
+                                alert={alert}
+                                confirm={confirm}
+                                onUpdateClicked={handleUpdateClick}
+                            />
+                        }
 
-                {view === 'list' &&
-                    <ProductsList
-                        alert={alert}
-                        confirm={confirm}
-                        onUpdateClicked={handleUpdateClick}
-                    />
-                }
+                        {view === 'create' &&
+                            <CreateProduct
+                                alert={alert}
+                                onCancelClicked={handleCancel}
+                                onProductCreated={handleProductCreated}
+                            />
+                        }
 
-                {view === 'create' &&
-                    <CreateProduct
-                        alert={alert}
-                        onCancelClicked={handleCancel}
-                        onProductCreated={handleProductCreated}
-                    />
-                }
-
-                {view === 'update' &&
-                    <UpdateProduct
-                        alert={alert}
-                        product={productToUpdate}
-                        onCancelClicked={handleCancel}
-                        onProductUpdated={handleProductUpdated}
-                    />
-                }
+                        {view === 'update' &&
+                            <UpdateProduct
+                                alert={alert}
+                                product={productToUpdate}
+                                onCancelClicked={handleCancel}
+                                onProductUpdated={handleProductUpdated}
+                            />
+                        }
+                    </div>
+                </main>
             </div>
         </div>
     )

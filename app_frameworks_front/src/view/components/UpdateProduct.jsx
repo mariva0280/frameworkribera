@@ -54,7 +54,7 @@ export const UpdateProduct = ({ product, alert, onCancelClicked, onProductUpdate
                                 Nombre
                             </label>
                             <input
-                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
+                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/30"
                                 type="text"
                                 name="nombre"
                                 id="nombre"
@@ -67,7 +67,7 @@ export const UpdateProduct = ({ product, alert, onCancelClicked, onProductUpdate
                                 Precio (€)
                             </label>
                             <input
-                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
+                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/30"
                                 type="number"
                                 step="0.01"
                                 name="precio"
@@ -81,7 +81,7 @@ export const UpdateProduct = ({ product, alert, onCancelClicked, onProductUpdate
                                 Descripción
                             </label>
                             <textarea
-                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
+                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/30"
                                 name="descripcion"
                                 id="descripcion"
                                 rows="3"
@@ -94,7 +94,7 @@ export const UpdateProduct = ({ product, alert, onCancelClicked, onProductUpdate
                                 Stock
                             </label>
                             <input
-                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
+                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/30"
                                 type="number"
                                 name="stock"
                                 id="stock"
@@ -115,7 +115,7 @@ export const UpdateProduct = ({ product, alert, onCancelClicked, onProductUpdate
                         </button>
 
                         <button
-                            className="inline-flex items-center justify-center rounded-lg bg-green-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2"
+                            className="inline-flex items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                             type="submit"
                         >
                             Actualizar

@@ -58,7 +58,7 @@ export const CreateProduct = ({ alert, onCancelClicked, onProductCreated }) => {
                                 Nombre
                             </label>
                             <input
-                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30"
+                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/30"
                                 type="text"
                                 id="nombre"
                                 name="nombre"
@@ -72,7 +72,7 @@ export const CreateProduct = ({ alert, onCancelClicked, onProductCreated }) => {
                                 Precio (€)
                             </label>
                             <input
-                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30"
+                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/30"
                                 type="number"
                                 id="precio"
                                 name="precio"
@@ -87,7 +87,7 @@ export const CreateProduct = ({ alert, onCancelClicked, onProductCreated }) => {
                                 Descripción
                             </label>
                             <textarea
-                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30"
+                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/30"
                                 id="descripcion"
                                 name="descripcion"
                                 rows="3"
@@ -101,7 +101,7 @@ export const CreateProduct = ({ alert, onCancelClicked, onProductCreated }) => {
                                 Stock
                             </label>
                             <input
-                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30"
+                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/30"
                                 type="number"
                                 id="stock"
                                 name="stock"
@@ -122,7 +122,7 @@ export const CreateProduct = ({ alert, onCancelClicked, onProductCreated }) => {
                         </button>
 
                         <button
-                            className="inline-flex items-center justify-center rounded-lg bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+                            className="inline-flex items-center justify-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
                             type="submit"
                         >
                             Crear

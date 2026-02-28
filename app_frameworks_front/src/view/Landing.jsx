@@ -22,8 +22,7 @@ export const Landing = ({ onRegisterClicked, onLoginClicked }) => {
                         Desde aquí puedes registrarte o iniciar sesión para gestionar tus productos. ¡Bienvenido a la aplicación de gestión de productos!
                     </p>
                     <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                        <a className="inline-flex items-center justify-center rounded-lg bg-sky-600 py-3 text-sm font-semibold text-white
-                        shadow-sm transition hover:bg-sky-700 focus:outline-none focus:ring-sky-500 focus:ring-offset-2"
+                        <a className="inline-flex items-center justify-center rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
                         href="#" 
                         onClick={handleRegisterClick}>
                             Crear cuenta
