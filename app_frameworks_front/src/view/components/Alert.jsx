@@ -2,16 +2,27 @@ export const Alert = ({ message, onAccepted }) => {
     const handleAcceptAlert = () => onAccepted()
 
     return (
-        <div className="fixed inset-0 z-50 bg-white/10 backdrop-blur-sm flex items-center justify-center px-4">
-            <div className="bg-white border border-black rounded-xl shadow-lg w-full max-w-md p-6 flex flex-col items-center gap-4">
-                <div className="text-4xl text-[#119fd3]">⚠️</div>
-                <p className="text-center text-gray-800">{message}</p>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50">
 
-                <button className="bg-[#0ab5ee] hover:bg-[#098ec3] text-white font-medium px-4 py-2 rounded transition-transform transform hover:scale-105"
-                    type="button"
-                    onClick={handleAcceptAlert}>
-                    Accept
-                </button>
+            <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-lg">
+
+                <h3 className="text-lg font-semibold text-slate-900">
+                    Aviso
+                </h3>
+
+                <p className="mt-3 text-sm text-slate-600">
+                    {message}
+                </p>
+
+                <div className="mt-6 flex justify-end">
+                    <button
+                        onClick={handleAcceptAlert}
+                        className="rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-700 transition"
+                    >
+                        Aceptar
+                    </button>
+                </div>
+
             </div>
         </div>
     )

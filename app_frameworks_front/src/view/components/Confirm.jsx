@@ -4,24 +4,36 @@ export const Confirm = ({ message, onCancelled, onAccepted }) => {
     const handleAcceptConfirm = () => onAccepted()
 
     return (
-        <div className="fixed inset-0  z-50 bg-white/10 backdrop-blur-sm flex items-center justify-center px-4">
-            <div className="bg-white border border-black rounded-xl shadow-lg w-full max-w-md p-6 flex flex-col items-center gap-4">
-                <div className="text-4xl text-[#119fd3]">❓❓❓</div>
-                <p className="text-center text-gray-800">{message}</p>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50">
 
-                <div className="flex gap-4">
-                    <button className="border border-black text-black px-4 py-2 rounded hover:bg-gray-100 transition"
-                        type="button"
-                        onClick={handleCancelConfirm}>
-                        Cancel
+            <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-lg">
+
+                <h3 className="text-lg font-semibold text-slate-900">
+                    Confirmación
+                </h3>
+
+                <p className="mt-3 text-sm text-slate-600">
+                    {message}
+                </p>
+
+                <div className="mt-6 flex gap-3 justify-end">
+
+                    <button
+                        onClick={handleCancelConfirm}
+                        className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 transition"
+                    >
+                        Cancelar
                     </button>
 
-                    <button className="bg-[#0ab5ee] hover:bg-[#098ec3] text-white px-4 py-y rounded transition-transform transform hover:scale-105 "
-                        type="button"
-                        onClick={handleAcceptConfirm}>
-                        Accept
+                    <button
+                        onClick={handleAcceptConfirm}
+                        className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 transition"
+                    >
+                        Confirmar
                     </button>
+
                 </div>
+
             </div>
         </div>
     )
