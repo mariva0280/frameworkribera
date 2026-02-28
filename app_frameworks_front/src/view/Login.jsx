@@ -37,49 +37,85 @@ export const Login = ({ onRegisterClicked, onUserLoggedIn }) => {
 
     console.log('Login -> render')
 
-    return <div className="px-5 py-6">
+    return (
+        <div className="min-h-screen bg-slate-50 px-4 py-10">
+            <div className="mx-auto w-full max-w-md">
+                {/* Encabezado */}
+                <p className="text-center text-sm font-medium text-slate-600">
+                    💻 Programación de Aplicaciones utilizando Frameworks 💻
+                </p>
 
-        <i className="text-2xl block mb-4">💻 Programación de Aplicaciones utilizando Frameworks 💻</i>
+                {/* Card */}
+                <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                    <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+                        Iniciar sesión
+                    </h1>
+                    <p className="mt-1 text-sm text-slate-600">
+                        Accede con tu nombre de usuario y contraseña.
+                    </p>
 
-        <div className="mt-2">
-            <h1 className="text-[22px] font-bold text-[#119fd3] mb-4">Pagina Login</h1>
+                    <form className="mt-6 space-y-5" onSubmit={handleLoginSubmit}>
+                        {/* Usuario */}
+                        <div className="space-y-2">
+                            <label
+                                className="text-sm font-semibold text-slate-800"
+                                htmlFor="nombreUsuario"
+                            >
+                                Nombre de usuario
+                            </label>
 
-            <form className="flex flex-col gap-5" onSubmit={handleLoginSubmit}>
+                            <input
+                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30"
+                                type="text"
+                                name="nombreUsuario"
+                                id="nombreUsuario"
+                                placeholder="Tu nombre de usuario"
+                            />
+                        </div>
 
-                <div className="flex flex-col gap-[10px]">
-                    <label
-                        className="font-medium" htmlFor="nombreUsuario">Nombre de usuario
-                    </label>
-                    <input
-                        className="border border-black bg-[#cde5ed] rounded px-3 py-2"
-                        type="text"
-                        name="nombreUsuario"
-                        id="nombreUsuario"
-                        placeholder="Tu nombre de usuario" />
+                        {/* Password */}
+                        <div className="space-y-2">
+                            <label
+                                className="text-sm font-semibold text-slate-800"
+                                htmlFor="password"
+                            >
+                                Password
+                            </label>
+
+                            <input
+                                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30"
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Tu password"
+                            />
+                        </div>
+
+                        {/* Acciones */}
+                        <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
+                            <a
+                                className="text-sm font-semibold text-slate-700 underline-offset-4 hover:underline"
+                                href="#"
+                                onClick={handleRegisterClick}
+                            >
+                                ¿No tienes cuenta? Regístrate
+                            </a>
+
+                            <button
+                                className="inline-flex items-center justify-center rounded-lg bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+                                type="submit"
+                            >
+                                Login
+                            </button>
+                        </div>
+                    </form>
                 </div>
 
-                <div className="flex flex-col gap-[10px]">
-                    <label
-                        className="font-medium" htmlFor="password">Password
-                    </label>
-                    <input
-                        className="border border-black bg-[#cde5ed] rounded px-3 py-2"
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Tu password" />
-                </div>
-
-                <div className="flex justify-between items-center mt-4">
-                    <a
-                        className="no-underline text-black font-medium" href='#'
-                        onClick={handleRegisterClick}>Registro
-                    </a>
-                    <button
-                        className="text-white bg-[#0ab5ee] font-thin border-none rounded-[10px] cursor-pointer px-4 py-2" type="submit">Login
-                    </button>
-                </div>
-            </form>
+                {/* Pie */}
+                <p className="mt-6 text-center text-xs text-slate-500">
+                    Interfaz mejorada con utilidades de Tailwind (layout, tipografía, colores, spacing y alineación).
+                </p>
+            </div>
         </div>
-    </div>
+    )
 }
