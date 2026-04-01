@@ -5,12 +5,13 @@ export const CreateProduct = ({ alert, onCancelClicked, onProductCreated }) => {
     const handleSubmit = event => {
         event.preventDefault()
 
-        const form = event.target
+        const form = event.currentTarget
+        const formData = new FormData(form)
 
-        const nombre = form.nombre.value
-        const descripcion = form.descripcion.value
-        const precio = form.precio.value
-        const stock = form.stock.value
+        const nombre = formData.get('nombre')
+        const descripcion = formData.get('descripcion')
+        const precio = formData.get('precio')
+        const stock = formData.get('stock')
 
         try {
             logic.registerProduct(nombre, descripcion, precio, stock)

@@ -9,10 +9,11 @@ export const Login = ({ onRegisterClicked, onUserLoggedIn }) => {
     const handleLoginSubmit = event => {
         event.preventDefault()
 
-        const form = event.target
+        const form = event.currentTarget
+        const formData = new FormData(form)
 
-        const nombreUsuario = form.nombreUsuario.value
-        const password = form.password.value
+        const nombreUsuario = formData.get('nombreUsuario')
+        const password = formData.get('password')
 
         try {
             logic.loginUser(nombreUsuario, password)
