@@ -14,7 +14,7 @@ class JwtServiceTest {
     private Usuario usuario;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         String secret = "miclavesupersegurademinimo32caracteres123";
         long expirationMs = 3600000; // 1 hora
 
@@ -27,7 +27,7 @@ class JwtServiceTest {
     }
 
     @Test
-    void generateToken_ShouldReturnToken_WhenUserIsValid() {
+    public void generateToken_ShouldReturnToken_WhenUserIsValid() {
         String token = jwtService.generateToken(usuario);
 
         assertNotNull(token);
@@ -35,7 +35,7 @@ class JwtServiceTest {
     }
 
     @Test
-    void getUsernameFromToken_ShouldReturnCorrectUsername() {
+    public void getUsernameFromToken_ShouldReturnCorrectUsername() {
         String token = jwtService.generateToken(usuario);
 
         String username = jwtService.getUsernameFromToken(token);
@@ -44,7 +44,7 @@ class JwtServiceTest {
     }
 
     @Test
-    void isTokenValid_ShouldReturnTrue_WhenTokenIsCorrect() {
+    public void isTokenValid_ShouldReturnTrue_WhenTokenIsCorrect() {
         String token = jwtService.generateToken(usuario);
 
         boolean result = jwtService.isTokenValid(token);
@@ -53,11 +53,20 @@ class JwtServiceTest {
     }
 
     @Test
-    void isTokenValid_ShouldReturnFalse_WhenTokenIsInvalid() {
+    public void isTokenValid_ShouldReturnFalse_WhenTokenIsInvalid() {
         String invalidToken = "esto.no.es.un.jwt.valido";
 
         boolean result = jwtService.isTokenValid(invalidToken);
 
         assertFalse(result);
+    }
+
+    @Test
+    public void getUsernameFromToken_ShouldThrowException_WhenTokenIsInvalid() {
+        String invalidToken = "token.invalido";
+
+        assertThrows(Exception.class, () -> {
+            jwtService.getUsernameFromToken(invalidToken);
+        });
     }
 }
