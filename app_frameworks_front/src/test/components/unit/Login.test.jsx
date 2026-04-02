@@ -101,4 +101,27 @@ describe('Login component', () => {
       expect(mockAlert).toHaveBeenCalledWith('Credenciales incorrectas')
     })
   })
+
+  it('handles empty response from login service', async () => {
+  const user = userEvent.setup()
+
+  // simulamos respuesta vacía (caso raro)
+  logic.loginUser.mockResolvedValueOnce(undefined)
+
+  render(
+    <Login
+      onRegisterClicked={onRegisterClicked}
+      onUserLoggedIn={onUserLoggedIn}
+    />
+  )
+
+  await user.type(screen.getByLabelText('Nombre de usuario'), 'maria')
+  await user.type(screen.getByLabelText('Password'), '123456')
+  await user.click(screen.getByRole('button', { name: 'Login' }))
+
+  await waitFor(() => {
+    // sigue funcionando aunque la respuesta sea vacía
+    expect(onUserLoggedIn).toHaveBeenCalled()
+  })
+})
 })
