@@ -1,4 +1,6 @@
-import { NetworkError, ValidationError, ServerError } from 'com';
+//import { NetworkError, ValidationError, ServerError } from 'com';
+import * as com from 'com'
+const { NetworkError, ValidationError, ServerError } = com
 import { data } from '../data'
 
 export const getProducts = () => {  

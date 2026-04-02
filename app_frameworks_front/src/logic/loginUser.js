@@ -1,5 +1,7 @@
 import { data } from '../data'
-import { validate, NetworkError, ValidationError, ServerError } from 'com'
+//import { validate, NetworkError, ValidationError, ServerError } from 'com'
+import * as com from 'com'
+const { validate, NetworkError, ValidationError, ServerError } = com
 
 export const loginUser = (nombreUsuario, password) => {
     validate.nombreUsuario(nombreUsuario)
