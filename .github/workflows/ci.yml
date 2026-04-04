@@ -31,7 +31,11 @@ jobs:
 
       - name: Run backend tests
         working-directory: app_frameworks
-        run: ./mvnw test
+        env:
+          SPRING_PROFILES_ACTIVE: test
+          JWT_SECRET: miclavesupersegurademinimo32caracteres123
+          JWT_EXPIRATION_MS: 3600000
+        run: ./mvnw test -Dspring.profiles.active=test
 
       - name: Install frontend dependencies
         working-directory: app_frameworks_front
