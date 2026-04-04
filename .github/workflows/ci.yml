@@ -56,8 +56,14 @@ jobs:
 
       - name: Start backend
         working-directory: app_frameworks
+        env:
+          JWT_SECRET: miclavesupersegurademinimo32caracteres123
+          JWT_EXPIRATION_MS: 3600000
         run: |
-          ./mvnw spring-boot:run > backend.log 2>&1 &
+          ./mvnw spring-boot:run \
+            -Dspring-boot.run.profiles=test \
+            -Dspring-boot.run.jvmArguments="-Dspring.datasouce.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=MySQL -Dspring.datasource.driver-class-name=org.h2.Driver -Dspring.datasouce.username=sa -Dspring.datasouce.password= -Dspring.jpa.hibernate.ddl-auto=create-drop -Dspring.jpa.database-platform=org.hibernate.dialect.H2Dialect -Dspring.flyway.enabled=false -Djwt.secret=${Jwt_SECRET} -Djwt.expiration-ms=${JWT_EXPIRATION_MS}" \
+            > backend.log 2>&1 &
           echo $! > backend.pid
 
       - name: Wait for backend
@@ -71,6 +77,11 @@ jobs:
           done
           echo "Backend did not start in time"
           exit 1
+
+      - name: Show backend logs on startup failure
+        if: failure()
+        working-directory: app_frameworks
+        run: cat backend.log    
 
       - name: Start frontend
         working-directory: app_frameworks_front
