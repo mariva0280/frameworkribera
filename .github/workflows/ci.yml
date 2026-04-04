@@ -35,8 +35,16 @@ jobs:
           SPRING_PROFILES_ACTIVE: test
           JWT_SECRET: miclavesupersegurademinimo32caracteres123
           JWT_EXPIRATION_MS: 3600000
-        run: ./mvnw test -Dspring.profiles.active=test
-
+        run: >
+         ./mvnw test 
+         -Dspring.profiles.active=test
+         "-Dspring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=MySQL"
+         -Dspring.datasource.driver-class-name=org.h2.Driver
+         -Dspring.datasource.username=sa
+         -Dspring.datasource.password=
+         -Dspring.jps.hibernate.ddl-auto=create-drop
+         -Dspring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+         -Dspring.flyway.enabled=false
       - name: Install frontend dependencies
         working-directory: app_frameworks_front
         run: npm ci
