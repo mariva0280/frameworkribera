@@ -1,12 +1,22 @@
 import { test, expect } from '@playwright/test'
 
 test('permite crear un producto', async ({ page }) => {
+  const username = `maria${Date.now()}`
+  const email = `${username}@test.com`
+  const password = '123456'
   const productName = `Producto E2E ${Date.now()}`
+
+  await page.goto('/register')
+
+  await page.getByLabel('Nombre de usuario').fill(username)
+  await page.getByLabel('Email').fill(email)
+  await page.getByLabel('Password').fill(password)
+  await page.getByRole('button', { name: /registr/i }).click()
 
   await page.goto('/login')
 
-  await page.getByLabel('Nombre de usuario').fill('maria')
-  await page.getByLabel('Password').fill('123456')
+  await page.getByLabel('Nombre de usuario').fill(username)
+  await page.getByLabel('Password').fill(password)
   await page.getByRole('button', { name: 'Login' }).click()
 
   await expect(page.getByText('Panel de gestión de productos')).toBeVisible()
@@ -22,7 +32,5 @@ test('permite crear un producto', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Crear' }).click()
 
-  await expect(
-    page.getByRole('heading', { name: productName })
-  ).toBeVisible()
+  await expect(page.getByRole('heading', { name: productName })).toBeVisible()
 })

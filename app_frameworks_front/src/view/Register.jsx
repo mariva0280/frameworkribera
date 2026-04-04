@@ -60,7 +60,7 @@ export const Register = ({ onLoginClicked, onUserRegistered }) => {
                 <div className="flex flex-col gap-[10px]">
                     <label
                         className="font-medium"
-                        htmlFor="email">E-mail
+                        htmlFor="email">Email
                     </label>
                     <input className="border border-black bg-[#cde5ed] rounded px-3 py-2"
                         type="email"
