@@ -14,11 +14,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
+@TestPropertySource(properties = {
+        "spring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=MySQL",
+        "spring.datasource.driver-class-name=org.h2.Driver",
+        "spring.datasource.username=sa",
+        "spring.datasource.password=",
+        "spring.jpa.hibernate.ddl-auto=create-drop",
+        "spring.jpa.database-platform=org.hibernate.dialect.H2Dialect",
+        "spring.flyway.enabled=false",
+        "jwt.secret=miclavesupersegurademinimo32caracteres123",
+        "jwt.expiration-ms=3600000"
+})
 class AuthControllerIntegrationTest {
 
     @Autowired
@@ -31,12 +43,12 @@ class AuthControllerIntegrationTest {
     private PasswordEncoder passwordEncoder;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         usuarioRepository.deleteAll();
     }
 
     @Test
-    public void register_ShouldReturnOk_WhenRequestIsValid() throws Exception {
+    void register_ShouldReturnOk_WhenRequestIsValid() throws Exception {
         String requestBody = """
             {
               "nombreUsuario": "maria",
@@ -53,7 +65,7 @@ class AuthControllerIntegrationTest {
     }
 
     @Test
-    public void register_ShouldReturnBadRequest_WhenUsernameAlreadyExists() throws Exception {
+    void register_ShouldReturnBadRequest_WhenUsernameAlreadyExists() throws Exception {
         Usuario usuario = new Usuario();
         usuario.setNombreUsuario("maria");
         usuario.setEmail("otro@test.com");
@@ -77,7 +89,7 @@ class AuthControllerIntegrationTest {
     }
 
     @Test
-    public void login_ShouldReturnOkAndToken_WhenCredentialsAreValid() throws Exception {
+    void login_ShouldReturnOkAndToken_WhenCredentialsAreValid() throws Exception {
         Usuario usuario = new Usuario();
         usuario.setNombreUsuario("maria");
         usuario.setEmail("maria@test.com");
