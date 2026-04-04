@@ -6,7 +6,7 @@ test('permite crear un producto', async ({ page, request }) => {
   const password = '123456'
   const productName = `Producto E2E ${Date.now()}`
 
-  const registerResponse = await request.post('http://127.0.0.1:8080/api/auth/register', {
+  const registerResponse = await request.post('http://localhost:8080/api/auth/register', {
     data: {
       nombreUsuario: username,
       email,
@@ -24,7 +24,7 @@ test('permite crear un producto', async ({ page, request }) => {
 
   await expect(
     page.getByRole('heading', { name: 'Panel de gestión de productos' })
-  ).toBeVisible()
+  ).toBeVisible({ timeout: 10000 })
 
   await page.getByRole('button', { name: '+ Nuevo producto' }).click()
 

@@ -54,7 +54,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOrigins(List.of("http://localhost:5173", "https://frameworkribera.vercel.app"));
+        config.setAllowedOrigins(List.of("http://localhost:5173", "http://127.0.0.1:5173", "https://frameworkribera.vercel.app"));
 
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 

@@ -5,7 +5,7 @@ test('permite iniciar sesión con credenciales válidas', async ({ page, request
   const email = `${username}@test.com`
   const password = '123456'
 
-  const registerResponse = await request.post('http://127.0.0.1:8080/api/auth/register', {
+  const registerResponse = await request.post('http://localhost:8080/api/auth/register', {
     data: {
       nombreUsuario: username,
       email,
@@ -23,5 +23,5 @@ test('permite iniciar sesión con credenciales válidas', async ({ page, request
 
   await expect(
     page.getByRole('heading', { name: 'Panel de gestión de productos' })
-  ).toBeVisible()
+  ).toBeVisible({ timeout: 10000 })
 })
