@@ -15,7 +15,9 @@ export const registerProduct = (nombre, descripcion, precio, stock) => {
         throw new NetworkError('No token available');
     }
 
-    return fetch(import.meta.env.VITE_API_URL + '/productos', {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api'
+
+    return fetch(API_URL + '/productos', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

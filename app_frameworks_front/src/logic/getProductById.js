@@ -12,7 +12,9 @@ export const getProductById = id => {
         throw new NetworkError('No token available');
     }
 
-    return fetch(import.meta.env.VITE_API_URL + `/productos/${id}`, {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api'
+
+    return fetch(API_URL + `/productos/${id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

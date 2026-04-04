@@ -1,13 +1,15 @@
 import { data } from '../data'
-//import { validate, NetworkError, ValidationError, ServerError } from 'com'
 import * as com from 'com'
+
 const { validate, NetworkError, ValidationError, ServerError } = com
 
 export const loginUser = (nombreUsuario, password) => {
     validate.nombreUsuario(nombreUsuario)
     validate.password(password)
 
-    return fetch(import.meta.env.VITE_API_URL + '/auth/login', {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api'
+
+    return fetch(API_URL + '/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -22,17 +24,17 @@ export const loginUser = (nombreUsuario, password) => {
                 return response.json()
                     .catch(() => { throw new NetworkError('json error') })
                     .then(body => {
-                        if(!body || !body.token) {
+                        if (!body || !body.token) {
                             throw new ServerError('invalid login response')
                         }
-                        
+
                         data.setToken(body.token)
                     })
 
             return response.json()
                 .catch(() => { throw new NetworkError('json error') })
                 .then(body => {
-                    if(typeof body === 'object' && !Array.isArray(body)) {
+                    if (typeof body === 'object' && !Array.isArray(body)) {
                         const firstError = Object.values(body)[0]
                         throw new ValidationError(firstError)
                     }
@@ -45,7 +47,7 @@ export const loginUser = (nombreUsuario, password) => {
                         throw new ServerError(body.error)
                     }
 
-                    throw new ServerError("unexpected server error")
+                    throw new ServerError('unexpected server error')
                 })
         })
 }
